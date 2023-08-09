@@ -3,27 +3,27 @@ import "./App.css";
 
 class App extends Component {
   state = {
-    policyName: "",
-    policyRequirement: "",
+    inputs: {
+      input1: { value: "", showErrorMessage: false },
+      input2: { value: "", showErrorMessage: false },
+      input3: { value: "", showErrorMessage: false },
+    },
     exampleInput: "",
-    description: "",
     remediation: "",
+    showErrorMessage: false,
   };
 
-  onChangePolicyName = (event) => {
-    this.setState({ policyName: event.target.value });
-  };
-
-  onChangePolicyRequirement = (event) => {
-    this.setState({ policyRequirement: event.target.value });
+  onChangePolicyName = (inputkey, event) => {
+    const { inputs } = this.state;
+    const newInputs = {
+      ...inputs,
+      [inputkey]: { ...inputkey, value: event.target.value },
+    };
+    this.setState({ inputs: newInputs });
   };
 
   onChangeExampleInput = (event) => {
     this.setState({ exampleInput: event.target.value });
-  };
-
-  onChangeDescription = (event) => {
-    this.setState({ description: event.target.value });
   };
 
   onChangeRemediation = (event) => {
@@ -31,29 +31,35 @@ class App extends Component {
     console.log(event.target.value);
   };
 
+  handleBlur = (inputKey) => {
+    const { inputs } = this.state;
+    const inputValue = inputs[inputKey].value;
+    if (inputValue.trim() === "") {
+      this.setState({
+        inputs: {
+          ...inputs,
+          [inputKey]: { ...inputs[inputKey], showErrorMessage: true },
+        },
+      });
+    } else {
+      this.setState({
+        inputs: {
+          ...inputs,
+          [inputKey]: { ...inputs[inputKey], showErrorMessage: false },
+        },
+      });
+    }
+  };
+
   onGenerate = (event) => {
     event.preventDefault();
-
-    this.setState({
-      policyName: "",
-      policyRequirement: "",
-      exampleInput: "",
-      description: "",
-      remediation: "",
-    });
   };
 
   render() {
-    const {
-      policyName,
-      policyRequirement,
-      exampleInput,
-      description,
-      remediation,
-    } = this.state;
+    const { inputs, exampleInput, remediation } = this.state;
     return (
       <div className="App">
-        <h1 className="head"> Policy Generator </h1>
+        <h1>Policy Generator</h1>
         <form className="form" onSubmit={this.onGenerate}>
           <div className="inputism">
             <label htmlFor="policyName" className="policyName">
@@ -63,10 +69,14 @@ class App extends Component {
               type="text"
               id="policyNam"
               className="input1 textarea"
-              value={policyName}
-              onChange={this.onChangePolicyName}
+              value={inputs.input1.policyName}
+              onChange={(event) => this.onChangePolicyName("input1", event)}
               placeholder="Enter Policy Name"
+              onBlur={() => this.handleBlur("input1")}
             />
+            {inputs.input1.showErrorMessage && (
+              <p style={{ color: "red" }}>Policy Name required!</p>
+            )}
           </div>
           <div className="card">
             <div className="inputism">
@@ -77,11 +87,15 @@ class App extends Component {
                 id="policyReq"
                 rows="4"
                 cols="50"
-                value={policyRequirement}
-                onChange={this.onChangePolicyRequirement}
+                value={inputs.input2.value}
+                onChange={(event) => this.onChangePolicyName("input2", event)}
                 placeholder="Enter Policy Requirement"
                 className="textarea"
+                onBlur={() => this.handleBlur("input2")}
               ></textarea>
+              {inputs.input2.showErrorMessage && (
+                <p style={{ color: "red" }}>Policy requirement required!</p>
+              )}
             </div>
             <div className="inputism">
               <label htmlFor="exampleInput" className="label">
@@ -107,8 +121,8 @@ class App extends Component {
                 id="description"
                 rows="4"
                 cols="50"
-                value={description}
-                onChange={this.onChangeDescription}
+                value={inputs.input3.value}
+                onChange={(event) => this.onChangePolicyName("input3", event)}
                 placeholder="Enter Description"
                 className="textarea"
               ></textarea>
