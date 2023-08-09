@@ -8,7 +8,7 @@
   color: white;
   height: 100vh;
   font-family: "Times New Roman";
-  background-image: linear-gradient(to top,#cecaca,#030500);
+  background-image: linear-gradient(to left,#1b5050,#030500);
 }
 .inputism {
   display: flex;

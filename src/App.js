@@ -81,7 +81,7 @@ class App extends Component {
           <div className="card">
             <div className="inputism">
               <label htmlFor="policyReq" className="label">
-                Policy requirement
+                Policy Requirement
               </label>
               <textarea
                 id="policyReq"
@@ -94,12 +94,12 @@ class App extends Component {
                 onBlur={() => this.handleBlur("input2")}
               ></textarea>
               {inputs.input2.showErrorMessage && (
-                <p style={{ color: "red" }}>Policy requirement required!</p>
+                <p style={{ color: "red" }}>Policy Requirement required!</p>
               )}
             </div>
             <div className="inputism">
               <label htmlFor="exampleInput" className="label">
-                Example input
+                Example Input
               </label>
               <textarea
                 id="exampleInput"
