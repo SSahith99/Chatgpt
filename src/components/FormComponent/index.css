@@ -1,0 +1,120 @@
+body {
+  background-image: linear-gradient(
+    30deg,
+    hsl(240deg 56% 48%) 0%,
+    hsl(250deg 48% 49%) 10%,
+    hsl(260deg 40% 49%) 24%,
+    hsl(271deg 34% 50%) 42%,
+    hsl(285deg 28% 50%) 57%,
+    hsl(305deg 24% 50%) 68%,
+    hsl(325deg 29% 54%) 75%,
+    hsl(340deg 34% 58%) 81%,
+    hsl(354deg 40% 62%) 85%,
+    hsl(358deg 39% 63%) 89%,
+    hsl(353deg 31% 62%) 92%,
+    hsl(345deg 22% 61%) 94%,
+    hsl(330deg 14% 60%) 96%,
+    hsl(284deg 9% 60%) 97%,
+    hsl(232deg 12% 62%) 98%,
+    hsl(212deg 22% 61%) 99%,
+    hsl(204deg 32% 60%) 100%,
+    hsl(200deg 41% 58%) 100%
+  );
+  background-repeat: no-repeat;
+  height: 100vh;
+  overflow-y: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Quicksand", sans-serif;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  height: 100vh;
+  color: #1e1c1c;
+  font-family: "Times New Roman";
+}
+
+.head {
+  color: #000;
+  font-family: bree-serif;
+  font-weight: bold;
+}
+
+.inputism {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 5px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+@media screen and (min-width: 768px) {
+  .card {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.label {
+  text-align: left;
+  font-family: Helvetica;
+}
+
+.input1 {
+  width: 30%;
+  min-width: 150px;
+  height: 30px;
+}
+
+.chatgpt {
+  width: 40px;
+  margin-left: 5px;
+}
+
+.generateButton {
+  text-align: center;
+  align-self: center;
+  border-radius: 5px;
+  border: 0px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.buttonEle {
+  display: flex;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+  padding: 15px;
+  background-color: #f8f8f885;
+  box-shadow: 1px 5px 10px #000;
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+}
+
+.textarea {
+  border: 2px solid #ffffff;
+  outline: none;
+  border-radius: 5px;
+}
+
+.errorMsg {
+  color: red;
+  font-size: 15px;
+}
